@@ -33,13 +33,36 @@ app.set("trust proxy" , 1) // trust proxy" دي كلمة ثابتة في اعد�
 
 // والغرض الأساسي من استخدامها هو إننا بنقول للسيرفر: "لو سمحت، هاتلي وانتبه لعنوان الـ IP الحقيقي بتاع جهاز المستخدم اللي قاعد في بيته، ومتتلخبطش وتاخد سيرفر بتاع IP بتاع شركة الاستضافة الوسيطة
 
+
+
+const allowedOrigins = [
+  "http://localhost:3000",
+
+  process.env.CLIENT_URL   // رابط الفرونت الحقيقي بالظبط، من غير / في الآخر
+]
+
 app.use(cors({
 
-origin : process.env.CLIENT_URL ,
+  origin: (origin, callback) => {
 
-credentials : true 
+    if (!origin || allowedOrigins.includes(origin)) {
 
-})) 
+      return callback(null, true)
+    }
+
+    const err = new Error("Not allowed by CORS")
+
+    err.status = 403
+
+    callback(err)
+
+  },
+
+  credentials: true
+  
+}))
+
+
 
 app.use(express.json())
 

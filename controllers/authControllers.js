@@ -150,7 +150,7 @@ process.env.ACCESS_TOKEN_SECRET ,
 
 {
 
- expiresIn : "15m"
+ expiresIn : "15d"
 
 })
 
@@ -248,7 +248,7 @@ const accessToken = jwt.sign(
 
   process.env.ACCESS_TOKEN_SECRET ,
 
-  {expiresIn : "15m"}
+  {expiresIn : "15d"}
 
 )
 
@@ -436,7 +436,7 @@ if (CheckUserOTP.code !== code) {
 
 
 
-return res.status(200).json({ message : "Code is valid" })
+return res.status(200).json({ message : "Code is succesfully" })
 
 }
 
