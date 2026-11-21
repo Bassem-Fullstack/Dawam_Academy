@@ -150,7 +150,7 @@ process.env.ACCESS_TOKEN_SECRET ,
 
 {
 
- expiresIn : "15d"
+ expiresIn : "15m"
 
 })
 
@@ -164,7 +164,7 @@ const refreshToken = jwt.sign (
 
   process.env.REFRESH_TOKEN_SECRET ,
 
-  {expiresIn : "10d"}
+  {expiresIn : "15d"}
  
 )
 
@@ -248,7 +248,7 @@ const accessToken = jwt.sign(
 
   process.env.ACCESS_TOKEN_SECRET ,
 
-  {expiresIn : "10d"}
+  {expiresIn : "15m"}
 
 )
 
